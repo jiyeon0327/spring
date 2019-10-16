@@ -4,5 +4,43 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- spring 쓸 bean등록하기! bean은 객체 -->
+	<!--DB설정하기! with mybatis  -->
+	<!-- id:bean을 지칭하는 아이디/ class: bean라는 녀석에 맵핑되는 실제 객체(BasicDataSource) 
+		BasicDataSource:닫기전에 한번 close라는 메소드를 실행시키기 ->끝나면 삭제
+	-->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<!--property:여기 객체의 맴버변수  
+		BasicDataSource에  oracle.jdbc.driver.OracledDriver를 넣어라 ->어떻게?setter를 연결해서!!
+		-->
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+		<property name="username" value="spring"/>
+		<property name="password" value="spring"/>
+	</bean>
+	<!--mybatis에서 이용하는 SessionFactory에 만들기  -->
+	<!--org.mybatis.spring.SqlSessionFactoryBean:세션을 만들어내는 class
+		SqlSessionFactoryBean는 즉, mybatisconfig enviroments에 설정했던 것과 
+		*필요한 것들
+		1)데이터 값
+		2)맵퍼
+		3)config
+		name="dataSource" :맴버객체 
+		ref="dataSource" : bean아이디값을 가져옴
 		
+	 -->
+	<bean id="sessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="mapperLocations" value="classpath*:mapper/**/*.xml"/>
+		<!-- 경로등록:classpath에서 첫 시작이 mapper이고 그 하위는 몇개가 와도 상관없고, xml로 끝나는 것 -->
+		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+	</bean>
+	
+	<!-- 실질적으로 SqlSession을 생성하는 template객체를 등록 -->
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sessionFactoryBean"/>
+	<!--매개변수있는 것으로 생성하고, index 가장 첫번째 매개변수 자리에 ref값을 넣으란것  -->
+	</bean>
+	
+	
 </beans>

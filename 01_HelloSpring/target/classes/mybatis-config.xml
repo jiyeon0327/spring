@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "mybatis-3-config.dtd" >
+<configuration>
+<!--sessionFactoryBean에 다 들어가 있어서 이곳에서는 settings,typeAlias만 하면 됨 invalidate안해도됨  -->
+	<typeAliases>
+		<typeAlias type="com.kh.spring.demo.model.vo.Dev" alias="dev"/>
+	</typeAliases>
+</configuration>
+

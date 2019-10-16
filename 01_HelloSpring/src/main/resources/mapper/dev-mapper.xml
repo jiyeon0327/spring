@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dev">
+	<insert id="insertDemo" parameterType="dev">
+		insert into dev values(seq_dev_no.nextval,
+			#{devName},#{devAge},#{devEmail},#{devGender},
+				<foreach collection="devLang" item="l" open="'" separator="," close="'">
+					${l}
+				</foreach>
+			)
+			<!-- #{devLang}는 객체라서 이렇게 쓰면 안됨!
+				${1}로 불러올것===>#{l}는 안됨!자동으로 " ' "으로 붙여주기 때문!
+			 -->
+	</insert>
+</mapper>
