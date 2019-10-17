@@ -4,6 +4,8 @@
 <!--sessionFactoryBean에 다 들어가 있어서 이곳에서는 settings,typeAlias만 하면 됨 invalidate안해도됨  -->
 	<typeAliases>
 		<typeAlias type="com.kh.spring.demo.model.vo.Dev" alias="dev"/>
+		<typeAlias type="com.kh.spring.member.model.vo.Member" alias="m"/>
+		<typeAlias type="com.kh.spring.common.type.StringArrayHandler" alias="strArray"/>
+		
 	</typeAliases>
 </configuration>
-

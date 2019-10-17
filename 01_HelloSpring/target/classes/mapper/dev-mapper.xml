@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="dev">
+		<!--객체배열을 이런식으로 갖고올 수 있음typeHandler(타입핸들러)를 등록하기 위해서는 typeHandler객체를 구현(Implements) -->
+		
 	<insert id="insertDemo" parameterType="dev">
 		insert into dev values(seq_dev_no.nextval,
 			#{devName},#{devAge},#{devEmail},#{devGender},
-				<foreach collection="devLang" item="l" open="'" separator="," close="'">
-					${l}
-				</foreach>
-			)
-			<!-- #{devLang}는 객체라서 이렇게 쓰면 안됨!
-				${1}로 불러올것===>#{l}는 안됨!자동으로 " ' "으로 붙여주기 때문!
-			 -->
+				<!-- #{devLang}는 객체라서 이렇게 쓰면 안됨!
+					${1}로 불러올것===>#{l}는 안됨!자동으로 " ' "으로 붙여주기 때문!
+				 -->
+				<!-- <foreach collection="devLang" item="l" open="'" separator="," close="'">
+					${l}`
+				</foreach> -->
+				<!-- #{devLang,typeHandler="com.kh.spring...."} -->
+				<!--  이런식으로 typeHandler에 길게 적기 보다는 mybatis-config에서 따로 strArr을 등록을 해주는 게 편함-->
+				#{devLang,typeHandler=strArray})
 	</insert>
+	<select id="selectDevList" resultMap="devMap"> 
+		select * from dev 
+	</select>
+	<resultMap type="dev" id="devMap">
+	<!--devLang은 string배열인데 단순한  string으로 가져오지 못해서 getString에서 써준걸 받아옴  -->
+		<result column="devLang" property="devLang" typeHandler="strArray"/>
+	</resultMap>
 </mapper>

@@ -1,5 +1,7 @@
 package com.kh.spring.demo.cotroller;
 
+
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -120,5 +122,12 @@ public class DemoController {
 			return "redirect:/index.jsp";//index를 webapp에서 빼놔서 이렇게 가능
 		}
 		
+		@RequestMapping("/demo/selectDevList.do")
+		public String selectDevList(Model model) {
+			List<Dev> list=service.selectDevList();
+			//Model은 request객체처럼 데이터를 보관하는 객체=>spring이 자동으로 값을 넣어줌
+			model.addAttribute("list",list);
+			return "demo/demoList";
+		}	
 	
 }
