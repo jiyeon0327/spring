@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="m">
+<mapper namespace="member">
 
   <insert id="insertMember" parameterType="m">
   		insert into Member values(
   			#{userId}, #{password},#{userName},#{gender},#{age},#{email},#{phone},
   			#{address},#{hobby,typeHandler=strArray}
   			,sysdate)
+  			<!--DB에 sysdate가 default라고 선언이 되어있으면 default처리 가능  -->
   </insert>
+  <select id="selectMemberOne" parameterType="m" resultType="m"> 
+  		select * from Member where userId=#{userId}
+  </select>	
 
 </mapper>

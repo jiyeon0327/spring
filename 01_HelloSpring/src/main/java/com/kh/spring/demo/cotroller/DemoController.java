@@ -6,12 +6,15 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.kh.spring.LoggerTest;
 import com.kh.spring.demo.model.service.DemoService;
 import com.kh.spring.demo.model.vo.Dev;
 
@@ -19,7 +22,7 @@ import com.kh.spring.demo.model.vo.Dev;
 //@Controller : spring은 자기가 관리하는 하나의 객체를 등록, 이 역할은 controller라고 정해두는 것
 //이 controller는 service를 가리켜야함 
 public class DemoController {
-	
+	private static Logger logger=LoggerFactory.getLogger(LoggerTest.class);
 	//private DemoService service =new DemoServiceImpl(); 만들지 않고
 	@Autowired
 	private DemoService service;//@Autowired를 써서 얘가 가동된 시점에 알아서 필요한 것들을 만듦
@@ -37,6 +40,13 @@ public class DemoController {
 	@RequestMapping("/demo/demo1.do")
 	public String demo1(HttpServletRequest req){
 		//demo.jsp에서 맵핑값이 여기로 넘어옴 
+		logger.debug("devName");
+		logger.debug("devAge");
+		logger.debug("devName");
+		logger.debug("devName");
+		
+		
+		
 		System.out.println(req.getParameter("devName"));
 		System.out.println(req.getParameter("devAge"));
 		System.out.println(req.getParameter("devEmail"));

@@ -8,6 +8,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
+//디폴트 생성자 빼먹지 말고 꼭 만들것
+//->@NoArgsConstructor,@AllArgsConstructor,@Data
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -15,7 +19,7 @@ public class Member {
 	private String userId;
 	private String password;
 	private String userName;
-	private char gender;
+	private String gender;
 	private int age;
 	private String email;
 	private String phone;
