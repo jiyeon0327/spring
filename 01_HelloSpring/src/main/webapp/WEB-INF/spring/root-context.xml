@@ -9,11 +9,15 @@
 	<!-- id:bean을 지칭하는 아이디/ class: bean라는 녀석에 맵핑되는 실제 객체(BasicDataSource) 
 		BasicDataSource:닫기전에 한번 close라는 메소드를 실행시키기 ->끝나면 삭제
 	-->
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	<bean id="realDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
 		<!--property:여기 객체의 맴버변수  
 		BasicDataSource에  oracle.jdbc.driver.OracledDriver를 넣어라 ->어떻게?setter를 연결해서!!
 		-->
+		<!-- realDataSource는 원래 데이터베이스에서 가져온 데이터(SQL문 실행결과) 또는 들어갈 데이터(SQL문을 의미)
+		  	이 두가지를 모두 PROXY가 중간에서 값을 받아(검문소같은역할) LOGGER를 이용해 출력   
+		  -->
+		
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
 		<property name="username" value="spring"/>
 		<property name="password" value="spring"/>
@@ -27,8 +31,27 @@
 		3)config
 		name="dataSource" :맴버객체 
 		ref="dataSource" : bean아이디값을 가져옴
-		
 	 -->
+	 <!-- log를 출력하기 위한 proxy객체를 등록,datasource인척하는 애를 맗마  -->
+	 	<!-- constructor-arg:생성자 매개변수값을 넣을 때 씀:BEANS을 클래스같은 느낌 
+	 		EX)
+					public LoggerInterceptor(DataSource realDataSource)  <-매개변수값을 넣어) {
+						super();
+						this.logger = logger; <- 맴버변수에 매개변수에 들어오는 logger를 넣는 것
+					}			 	
+	 	 -->
+	 <bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+	 	<constructor-arg ref="realDataSource"></constructor-arg>
+	 	<property name="logFormatter"><!-- 값을 넣어줄곳  -->
+	 		<bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
+	 			<property name="loggingType" value="MULTI_LINE"/>
+	 			<!--MULTI_LINE:밑으로 내려갈 수 있게 처리하는 것을 말함  -->
+	 			<!-- 뒤에 로그값을 찍도록 함-->
+	 			<property name="sqlPrefix" value="[SQL]"/>
+	 		</bean>
+	 	</property>
+	 </bean>
+	 
 	<bean id="sessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
 		<property name="mapperLocations" value="classpath*:mapper/**/*.xml"/>

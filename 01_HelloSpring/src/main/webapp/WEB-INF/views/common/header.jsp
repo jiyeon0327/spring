@@ -39,10 +39,12 @@
 		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 				<a class="dropdown-item" href="${pageContext.request.contextPath}/demo/demo.do">Dev 등록</a>
 				<a class="dropdown-item" href="${pageContext.request.contextPath}/demo/selectDevList.do">Dev 목록</a>
+				<!-- 서블릿이 아니라 main에 controller에 class를 만들기 -->
 		</div>
 			</li>
-				<!-- 서블릿이 아니라 main에 controller에 class를 만들기 -->
+				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/memo/memo.do">메모</a></li>
 			</ul>
+			
 			<c:if test="${empty loginMember }">
 			<button class="btn btn-outline-success my-2 my-sm-0" type="button" data-toggle="modal" 
 			data-target="#loginModal">로그인</button>

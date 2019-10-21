@@ -32,5 +32,24 @@
 		<!-- @Service라고 한것과 동일
 		<beans:bean class="com.kh.spring.member.model.service.memberServiceImpl">
 		</beans> -->
+		
+		
+		
+		<!-- 인터셉터 등록하기 -->
+		<interceptors>
+			<!-- 이 안은 하나로 인터셉터가 있다는 것을 말함-->
+			<interceptor>
+				<mapping path="/**"/><!-- /**:전체파일을 의미 -->
+				<exclude-mapping path="/member/*"/><!-- "/**"에서 이 줄 해당 path(/member/*)만 interceptor제외해라고 설정한것 -->
+				<beans:bean class="com.kh.spring.common.interceptor.LoggerInterceptor"/>
+			</interceptor>
+			<interceptor>
+				<mapping path="/demo/*"/><!-- 중간에 demo가 들어가면 다 인터셉트 거쳐가게 만든것 -->
+				<!-- <mapping path="/member/*"/> -->
+				<!-- 이렇게 있는 애들은 (여러자료를) 인터셉터로 등록해 다 가로챌 것이란 뜻, 하지만 안쓰는 게 좋음 프로그램이 안돌아갈 가능성이 큼-->
+				<beans:bean class="com.kh.spring.common.interceptor.Logincheck"/>
+				<!--숙제) dev에서 interceptor를 이용해서 admin으로만 로그인 했을때만 수정 삭제가 가능하도록 설정하기  -->
+			</interceptor>
+		</interceptors>
 	
 </beans:beans>

@@ -28,3 +28,4 @@ public class Member {
 	private Date enrollDate;
 
 }
+

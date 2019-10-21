@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+	<!-- 선언적 방식으로 AOP적용하기 -->
+	<!-- aspect로 활용할 객체 bean으로 등록 -->
+	<bean id="aspectTest" class="com.kh.spring.common.aspect.AspectTest"/><!-- 여긴  aspectTest는 그냥 bean임-->
+	
+	<!-- aop설정하기 :aopnamespace지정하기-->
+	<aop:config>
+		<aop:aspect ref="aspectTest"><!-- 참조하는 순간 aop객체가 됨  -->
+			<aop:pointcut expression="execution(* com.kh.spring.memo..*(..))" id="test"/>
+			<!--  ..은 memo 아래에 모든 메소드  /(..):1개 두개 상관없이 파라미터값이 오면 됨 -->
+			<!-- advice등록 -->
+			<aop:before method="beforeTest" pointcut-ref="test"/>
+			<!-- id=test, 즉 표현식에 맞는 애들만 메소드에 적용하게 함을 뜻함  -->
+			<!-- controller/service/dao 등에 있는 메소드 실행하기 전에 aspect에 있는 거 먼저 실행해 이뜻!  -->
+		</aop:aspect>
+	</aop:config>
+
+</beans>

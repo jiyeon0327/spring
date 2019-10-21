@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="memo">
+  <insert id="insertMemo" parameterType="memo">
+  	 insert into Memo values(
+  	 	SEQ_MEMONO.nextval,#{memo},#{password},sysdate
+  	 )
+  </insert>
+  <select id="selectMemo" resultType="memo">
+  	  select * from Memo
+  </select>
+ <!--map으로 사용할 경우 이렇게 한다.  
+ 		<select id="selectMemo" resultType="map"></select> 
+ 		
+ 		*조심할 점!!!!!!!!: parameterMap으로 쓸 경우 무조건 이전에 parameterMap 태그로 쓴 값이 있어야함
+ 		<parameterMap type="" id="aaa"> <-여기에 id값이
+      					kasodkasodklasdki 어떤처리
+   		</parameterMap>
+   		<resultMap type="" id=""></resultMap>
+  		<insert id="" parameterMap="aaa"></insert> <-parameterMap의 값으로 써주기!!
+ -->
+</mapper>

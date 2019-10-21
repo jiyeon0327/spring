@@ -142,7 +142,7 @@ public class MemberController {
 					//request는 페이지주소가 바뀔때마다 새로운 request가 됨 .session은 다른페이지로 가도 
 					//서버 안에서 유지가 됨,브라우저 하나로!그래서 session하나에다가 값을 저장을 하면
 					//다른페이지에서도 불러 올 수 있음
-					logger.debug(result.toString());
+					logger.debug(result.toString());//logger로 찍어봄
 					model.addAttribute("loginMember",result);
 					//페이지 새요청을 해서 안됨, 로그인 성공만 되고
 					//그래서 @SessionAttributes("loginMember")라고 위에 선언해주면 가능!!!!!!!model하나로 처리가능!
