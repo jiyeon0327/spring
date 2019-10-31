@@ -29,11 +29,15 @@ public class FestivalServiceImpl implements FestivalService {
 	}
 
 	@Override
-	public Festival selectFestival(int boardNo) {
-		return dao.selectFestival(session,boardNo);
+	public Festival selectFestival(int festival_No) {
+		return dao.selectFestival(session,festival_No);
 	}
 
-	
+	@Override
+	public Festival deleteFestival(String festival_Writer) {
+		return dao.deleteFestival(session,festival_Writer);
+	}
+
 
 	
 	

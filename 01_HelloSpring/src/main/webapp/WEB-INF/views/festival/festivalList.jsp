@@ -24,10 +24,10 @@
 			<c:if test="${not empty list }">
 				<c:forEach items="${list }" var="festival">
 				<tr>
-					<td><c:out value="${festival.boardNo}"/></td>
-					<td><a href="${path }/festival/festivalView?boardNo=${festival.boardNo }"><c:out value="${festival.boardTitle}"/></a></td>
-					<td><c:out value="${festival.boardDate}"/></td>
-					<td><c:out value="${festival.boardCount}"/></td>
+					<td><c:out value="${festival.festival_No}"/></td>
+					<td><a href="${path }/festival/festivalView?festival_No=${festival.festival_No }"><c:out value="${festival.festival_Title}"/></a></td>
+					<td><c:out value="${festival.festival_Date}"/></td>
+					<td><c:out value="${festival.festival_Date}"/></td>
 				</tr>
 				</c:forEach>
 			</c:if>

@@ -3,8 +3,8 @@
 <mapper namespace="festival">
   <insert id="insertFestival" parameterType="festival">
   	INSERT INTO FESTIVAL VALUES(
-  		SEQ_boardNo.NEXTVAL , 
-  	 	#{boardContent},#{boardTitle},sysdate,#{boardWriter},default,#{festival_Pic}
+  		SEQ_festival_No.NEXTVAL , 
+  	 	#{festival_Content},#{festival_Title},sysdate,#{festival_Writer},default,#{festival_Pic}
   	 	,#{festival_Thumbnail},#{festival_StartDate},#{festival_EndDate}
   	 	,#{festival_Phone},#{festival_Homepage}
   	 	,#{festival_Address},#{festival_Host},#{festival_Sub},#{festival_Price}
@@ -12,10 +12,12 @@
   	 )
   </insert>
   <select id="selectFestivalList" resultType="festival">
-  	SELECT * FROM FESTIVAL ORDER BY BOARDDATE DESC
+  	SELECT * FROM FESTIVAL ORDER BY festival_Date DESC
   </select>
   <select id="selectFestival" parameterType="_int" resultType="festival">
-  	SELECT * FROM FESTIVAL WHERE BOARDNO=#{boardNo}
+  	SELECT * FROM FESTIVAL WHERE Festival_No=#{festival_No}
   </select>
- 
+ <delete id="deleteFestival" parameterType="_int">
+ 	DELECT FROM FESTIVAL WHERE FESTIVAL_WRITER=#{festival_Writer}
+ </delete>
 </mapper>

@@ -11,23 +11,23 @@ import lombok.NoArgsConstructor;
 @Data
 public class Festival {
 	
-	private int boardNo;
-	private String boardContent;
-	private String boardTitle;
-	private Date boardDate;
-	private String boardWriter;
-	private int boardCount;
+	private int festival_No;
+	private String festival_Content;
+	private String festival_Title;
+	private Date festival_Date;
+	private String festival_Writer;
+	private int festival_Count;
 	private String festival_Pic;
 	private String festival_Thumbnail;
-	private String fastival_StartDate;
-	private String fastival_EndDate;
-	private String fastival_Phone;
-	private String fastival_Homepage;
-	private String fastival_Address;
+	private String festival_StartDate;
+	private String festival_EndDate;
+	private String festival_Phone;
+	private String festival_Homepage;
+	private String festival_Address;
 	private String festival_Host;
 	private String festival_Sub;
-	private String fastival_Price;
-	private String festical_Hashtag;
+	private String festival_Price;
+	private String festival_Hashtag;
 	private String festival_Proceeding;
 	
 }

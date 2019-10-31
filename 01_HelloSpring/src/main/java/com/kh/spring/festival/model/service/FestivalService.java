@@ -10,7 +10,9 @@ public interface FestivalService {
 
 	List<Festival> selectFestivalList();
 
-	Festival selectFestival(int boardNo);
+	Festival selectFestival(int festival_No);
+
+	Festival deleteFestival(String festival_Writer);
 
 
 

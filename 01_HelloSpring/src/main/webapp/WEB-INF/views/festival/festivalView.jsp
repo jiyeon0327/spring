@@ -17,11 +17,12 @@
 </style>  
 <section id="content">
 <div id="board-container">           	
-
-           	<input type="text" class="form-control" name="boardTitle" id="boardTitle" value="${festival.boardTitle}" readonly="readonly">
+ 
+           	<input type="text" class="form-control" name="festival_Title" id="festival_Title" value="${festival.festival_Title}" readonly="readonly">
             <input type="text" class="form-control" name="festival_Pic" id="festival_Pic" value="${festival.festival_Pic }" readonly="readonly">
+           
            	
-            <textarea class="form-control" name="boardContent" placeholder="내용" readonly="readonly">${festival.boardContent }</textarea>
+            <textarea class="form-control" name="festival_Content" placeholder="내용" readonly="readonly">${festival.festival_Content }</textarea>
             <br />
             <div id="board-add">
 	           <table>
@@ -42,7 +43,7 @@
 					</tr>
 					<tr>
 						<td>전화번호<input type="text" readonly="readonly" class="form-control" name="festival_Phone" value="${festival.festival_Phone}"></td>
-						<td>홈페이지<input type="text" readonly="readonly" class="form-control" name="festival_Homepage">${festival.festival_Homepage}</td>
+						<td>홈페이지<input type="text" readonly="readonly" class="form-control" name="festival_Homepage" value="${festival.festival_Homepage}"></td>
 					</tr>
 					<tr>	
 						<td>주소<input type="text" readonly="readonly" class="form-control" name="festival_Address" value="${festival.festival_Address}"></td>
@@ -56,7 +57,7 @@
 				</div>
 			 <h3></h3>    
             
-         
+         	<input type="button" value="삭제" id="btn-delete" class='btn btn-list' onclick='location.href="${path}/festival/festivalDelete.do"'/>
 	        <input type="button" value="목록" id='btn-list' class='btn btn-list' onclick='location.href="${path}/festival/festivalList"'/>
 
         <br>

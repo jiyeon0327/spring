@@ -21,16 +21,16 @@
         <form name="FestivalFrm" action="${pageContext.request.contextPath}/festival/festivalFormEnd" method="post" >
          
            
-            <input type="text" class="form-control" placeholder="제목" name="boardTitle" id="boardTitle" required>
+            <input type="text" class="form-control" placeholder="제목" name="festival_Title" id="festival_Title" required>
             <input type="text" class="form-control" placeholder="그림" name="festival_Pic" id="festival_Pic" required>
            	
-           	<input type="hidden" value="admin" name="boardWriter">
+           	<input type="hidden" value="admin" name="festival_Writer" id="festival_Writer" readonly="readonly">
            	<input type="hidden" value="테스트용데이터들1" name="festival_Thumbnail" id="festival_Thumbnail">
            	<input type="hidden" value="테스트용데이터들3" name="festival_Hashtag" id="festival_Hashtag">
            	<input type="hidden" value="테스트용데이터들3" name="festival_Hashtag" id="festival_Hashtag">
            	
            	
-            <textarea class="form-control" name="boardContent" id="festival_Pic" placeholder="내용" required></textarea>
+            <textarea class="form-control" name="festival_Content" id="festival_Content" placeholder="내용" required></textarea>
             <br />
             <div id="board-add">
             <table>
@@ -48,8 +48,8 @@
 	               <h3></h3>
 	           <table id="table-container">
 	            <tr>
- 					<td>시작일<input type="date" class="form-control" placeholder="시작일" name="festival_StartDate" pattern="yyyy-MM-dd"></td>
-					<td>종료일<input type="date" class="form-control" placeholder="종료일" name="festival_EndDate" pattern="yyyy-MM-dd"></td>
+ 					<td>시작일<input type="date" class="form-control" placeholder="시작일" name="festival_StartDate" ></td>
+					<td>종료일<input type="date" class="form-control" placeholder="종료일" name="festival_EndDate" ></td>
 				</tr>
 				<tr>
 					<td>전화번호<input type="text" class="form-control" placeholder="전화번호" name="festival_Phone"></td>

@@ -5,6 +5,7 @@ package com.kh.spring.festival.model.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -25,9 +26,16 @@ public class FestivalDaoImpl implements FestivalDao {
 	}
 
 	@Override
-	public Festival selectFestival(SqlSessionTemplate session, int boardNo) {
-		return session.selectOne("festival.selectFestival",boardNo);
+	public Festival selectFestival(SqlSessionTemplate session, int festival_No) {
+		return session.selectOne("festival.selectFestival",festival_No);
 	}
+
+	@Override
+	public Festival deleteFestival(SqlSessionTemplate session, String festival_Writer) {
+		return session.delete("festival.deleteFestival",festival_Writer);
+	}
+
+	
 	
 	
 	

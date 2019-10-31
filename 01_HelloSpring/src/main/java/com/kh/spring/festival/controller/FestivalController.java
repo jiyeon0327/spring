@@ -52,17 +52,23 @@ public class FestivalController {
 		model.addAttribute("loc",loc);
 		return "common/msg";
 	}
+	
 
  	@RequestMapping("/festival/festivalView")
- 	public ModelAndView Festival(int boardNo) {
+	  public ModelAndView selectFestival(int festival_No) {
+	  ModelAndView mv=new ModelAndView();
+	  mv.addObject("festival",service.selectFestival(festival_No));
+	  logger.debug(""+service.selectFestival(festival_No));
+	  mv.setViewName("festival/festivalView"); 
+	  return mv; 
+	  }
+	 
+ 	@RequestMapping("/festival/festivalDelete.do")
+ 	public ModelAndView deleteFestival(String festival_Writer) {
  		ModelAndView mv=new ModelAndView();
- 		mv.addObject("festival",service.selectFestival(boardNo));
- 		logger.debug(""+service.selectFestival(boardNo));
- 		mv.setViewName("festival/festivalView");
+ 		mv.addObject("festival",service.deleteFestival(festival_Writer));
+ 		mv.setViewName("/");
  		return mv;
- 	}
- 		
-	
-	
 
+ 	}
 }
