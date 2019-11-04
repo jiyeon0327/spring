@@ -12,7 +12,7 @@ public interface FestivalService {
 
 	Festival selectFestival(int festival_No);
 
-	Festival deleteFestival(String festival_Writer);
+	/* Festival deleteFestival(String festival_Writer); */
 
 
 

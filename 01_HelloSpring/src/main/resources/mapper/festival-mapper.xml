@@ -17,7 +17,7 @@
   <select id="selectFestival" parameterType="_int" resultType="festival">
   	SELECT * FROM FESTIVAL WHERE Festival_No=#{festival_No}
   </select>
- <delete id="deleteFestival" parameterType="_int">
+<!--  <delete id="deleteFestival" >
  	DELECT FROM FESTIVAL WHERE FESTIVAL_WRITER=#{festival_Writer}
- </delete>
+ </delete> -->
 </mapper>

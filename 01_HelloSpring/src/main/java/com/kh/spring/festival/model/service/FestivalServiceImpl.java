@@ -33,13 +33,12 @@ public class FestivalServiceImpl implements FestivalService {
 		return dao.selectFestival(session,festival_No);
 	}
 
-	@Override
-	public Festival deleteFestival(String festival_Writer) {
-		return dao.deleteFestival(session,festival_Writer);
-	}
-
-
-	
+	/*
+	 * @Override public Festival deleteFestival(String festival_Writer) { return
+	 * dao.deleteFestival(session,festival_Writer); }
+	 * 
+	 * 
+	 */
 	
 
 	

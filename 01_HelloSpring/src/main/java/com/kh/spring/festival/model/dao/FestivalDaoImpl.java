@@ -30,10 +30,10 @@ public class FestivalDaoImpl implements FestivalDao {
 		return session.selectOne("festival.selectFestival",festival_No);
 	}
 
-	@Override
-	public Festival deleteFestival(SqlSessionTemplate session, String festival_Writer) {
-		return session.delete("festival.deleteFestival",festival_Writer);
-	}
+//	@Override
+//	public Festival deleteFestival(SqlSessionTemplate session, String festival_Writer) {
+//		return session.delete("festival.deleteFestival",festival_Writer);
+//	}
 
 	
 	

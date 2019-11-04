@@ -63,12 +63,12 @@ public class FestivalController {
 	  return mv; 
 	  }
 	 
- 	@RequestMapping("/festival/festivalDelete.do")
- 	public ModelAndView deleteFestival(String festival_Writer) {
- 		ModelAndView mv=new ModelAndView();
- 		mv.addObject("festival",service.deleteFestival(festival_Writer));
- 		mv.setViewName("/");
- 		return mv;
-
- 	}
+	/*
+	 * @RequestMapping("/festival/festivalDelete.do") public ModelAndView
+	 * deleteFestival(String festival_Writer) { ModelAndView mv=new ModelAndView();
+	 * mv.addObject("festival",service.deleteFestival(festival_Writer));
+	 * mv.setViewName("/"); return mv;
+	 * 
+	 * }
+	 */
 }

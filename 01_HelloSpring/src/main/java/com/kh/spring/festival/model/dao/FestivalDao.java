@@ -16,8 +16,8 @@ public interface FestivalDao {
 
 	Festival selectFestival(SqlSessionTemplate session, int festival_No);
 
-	Festival deleteFestival(SqlSessionTemplate session,String festival_Writer);
-	
+//	Festival deleteFestival(SqlSessionTemplate session,String festival_Writer);
+
 	
 
 	
